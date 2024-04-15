@@ -1,1 +1,5 @@
 <%= link_to "articles index", "/articles" %>
+<% @articles.each do |article| %>
+  <br>
+  <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
+<% end %>
