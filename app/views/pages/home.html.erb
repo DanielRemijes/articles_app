@@ -1,5 +1,13 @@
-<%= link_to "articles index", "/articles" %>
-<% @articles.each do |article| %>
-  <br>
-  <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
-<% end %>
+<div>
+  <%= link_to "articles index", "/articles" %>
+</div>
+<div>
+  <% @articles.each do |article| %>
+    <br>
+    <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
+  <% end %>
+</div>
+<br>
+<div>
+  <%= link_to "Create an Article", "/articles/new" %>
+</div>
