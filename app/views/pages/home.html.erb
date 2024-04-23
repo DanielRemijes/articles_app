@@ -4,7 +4,10 @@
 <div>
   <% @articles.each do |article| %>
     <br>
-    <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
+    <div class="border p-1 rounded">
+      <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
+      <%= link_to "Edit Article #{article.id}", "/articles/#{article.id}/edit"%>
+    </div>
   <% end %>
 </div>
 <br>
