@@ -39,4 +39,8 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
+  def first_article
+    @article_first = Article.first
+  end
 end
