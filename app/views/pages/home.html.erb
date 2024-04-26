@@ -9,8 +9,10 @@
     <br>
     <div class="border p-1 rounded">
       <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
-      <%= link_to "Edit Article #{article.id}", "/articles/#{article.id}/edit"%>
-      <%= link_to "Delete Article #{article.id}", "/articles/#{article.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+      <% if article.user == current_user %>
+        <%= link_to "Edit Article #{article.id}", "/articles/#{article.id}/edit"%>
+        <%= link_to "Delete Article #{article.id}", "/articles/#{article.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+      <% end %>
     </div> 
   <% end %>
 </div>
