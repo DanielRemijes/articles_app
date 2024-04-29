@@ -1,13 +1,15 @@
-<div>
+<div class="p-4 grid grid-cols-4 gap-4">
   <% @articles.each do |article| %>
-    <h1>
-      <%= article.title %> | <%= article.id %>
+  <div class="border p-4">
+    <h1 class="text-xl font-bold mb-2">
+     <%= article.id %> | <%= article.title %> 
     </h1> 
 
-    <p>
+    <p class="text-gray-700">
       <%= article.description %>
     </p>
-
-    <br>
+  </div>
   <% end %>
 </div>
+<%= link_to "Back to home", root_path, class:"text-blue-600 border text-md mx-3 my-3" %>
+

@@ -1,15 +1,15 @@
-<div>
+<div class="p-4">
   <%= form_with model: @article do |form| %>
-    <div>
-      <%= form.label :title  %>
-      <%= form.text_field :title, class: "border" %>
+    <div class="mb-4">
+      <%= form.label :title, class: "block text-gray-700 font-bold mb-2"%>
+      <%= form.text_field :title, class: "form-input w-full border rounded border-2 border-gray-500 bg-gray-200"%>
+    </div>
+    <div class="mb-4">
+      <%= form.label :description, class: "block text-gray-700 font-bold mb-2"%>
+      <%= form.text_area :description, class: "form-textarea w-full border rounded border-2 border-gray-500 bg-gray-200", rows: 3 %>
     </div>
     <div>
-      <%= form.label :description %>
-      <%= form.text_area :description, class: "border" %>
-    </div>
-    <div>
-      <%= form.submit %>
+      <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"%>
     </div>
   <% end %>
 </div>

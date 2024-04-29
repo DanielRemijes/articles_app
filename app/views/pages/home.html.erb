@@ -1,38 +1,33 @@
-<div>
-  <%= link_to "articles index", "/articles" %>
-</div>
-<div>
-  <%= link_to "first article", "/articles/first" %>
-</div>
-<div>
-  <% @articles.each do |article| %>
-    <br>
-    <div class="border p-1 rounded">
-      <%= link_to "Show article #{article.id}", "/articles/#{article.id}" %>
-      <% if article.user == current_user %>
-        <%= link_to "Edit Article #{article.id}", "/articles/#{article.id}/edit"%>
-        <%= link_to "Delete Article #{article.id}", "/articles/#{article.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
-      <% end %>
-    </div> 
-  <% end %>
-</div>
+<div class="mt-6 ml-44 mr-80 px-8 py-8 bg-gradient-to-r from-sky-400 to-blue-700 shadow-2xl rounded-xl">
+  <div class="mb-4">
+    <%= link_to "Articles Index", "/articles", class: "text-red-600 hover:text-white text-2xl font-bold "%>
+  </div>
+  <div class="mb-4">
+    <%= link_to "First Article", "/articles/first", class: "text-red-600 hover:text-white text-2xl font-bold" %>
+  </div>
+  <div class="mb-4">
+    <% @articles.each do |article| %>      
+      <div class="mb-4 flex items-center">
+        <%= link_to "Show article #{article.id}", "/articles/#{article.id}", class: "text-white font-bold py-2 px-4 border-2 border-indigo-700 rounded mr-2 hover:bg-indigo-700" %>
+        <% if article.user == current_user %>
+          <%= link_to "Edit Article #{article.id}", "/articles/#{article.id}/edit", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2" %>
+          <%= link_to "Delete Article #{article.id}", "/articles/#{article.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"%>
+        <% end %>
+      </div> 
+    <% end %>
+  </div>
 
-<br>
+  <div class="mb-4">
+    <%= link_to "Create an Article", "/articles/new", class: "text-red-600 hover:text-white text-2xl font-bold" %>
+  </div>
 
-<div>
-  <%= link_to "Create an Article", "/articles/new" %>
-</div>
-
-<br>
-
-<div>
-  <div>
+  <div class="mb-4">
     <% if current_user %> 
-      <%= link_to "Sign Out", destroy_user_session_path,  data: {turbo_method: :delete}, class: "text-blue-600" %>
+      <%= link_to "Sign Out", destroy_user_session_path,  data: {turbo_method: :delete}, class: "bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded" %>
     <% else %>
-      <%= link_to "Get Started", new_user_registration_path, class: "text-blue-600" %>
-      |
-      <%= link_to "Sign In", new_user_session_path, class: "text-blue-600" %> <%# /users/sign_in %> 
+      <%= link_to "Get Started", new_user_registration_path, class: "bg-violet-700 hover:bg-violet-500 text-white font-bold py-2 px-4 rounded mr-3" %>
+
+      <%= link_to "Sign In", new_user_session_path, class: "bg-fuchsia-700 hover:bg-fuchsia-500 text-white font-bold py-2 px-4 rounded" %> <%# /users/sign_in %> 
     <% end %>
   </div>
 </div>
