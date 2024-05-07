@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -17,9 +18,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(params.require(:article).permit(:title, :description))
     @article.user_id = current_user.id
     if @article.save
-      redirect_to @article
+      redirect_to @article, notice: "You have successfully created an article!"
     else
-      render :new, status: :unprocessable_entity
+      render :new, alert: "There was an error while creating this article", status: :unprocessable_entity
     end
   end
 
@@ -45,5 +46,10 @@ class ArticlesController < ApplicationController
 
   def first_article
     @article_first = Article.first
+  end
+
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    redirect_to root_path, alert: "Not Authorized" if @article.nil?
   end
 end

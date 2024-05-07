@@ -8,10 +8,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <link href="./output.css" rel="stylesheet">
   </head>
 
   <body>
+    <% flash.each do |type,msg| %>
+      <div id="flash-container" class="fixed top-0 w-full flex justify-center">
+        <div id="flash" class="flash <%= type == 'alert' ? 'bg-red-600 px-2 py-2' : 'bg-green-600 px-2 py-2' %>">
+          <%= msg %>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
