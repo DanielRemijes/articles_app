@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get "/articles/first", to: "articles#first_article"
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
