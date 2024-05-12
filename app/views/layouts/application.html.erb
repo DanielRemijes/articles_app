@@ -13,8 +13,9 @@
   <body>
     <% flash.each do |type,msg| %>
       <div id="flash-container" class="fixed top-0 w-full flex justify-center">
-        <div id="flash" class="flash <%= type == 'alert' ? 'bg-red-600 px-2 py-2' : 'bg-green-600 px-2 py-2' %>">
+        <div id="flash" class="flash <%= type == 'alert' ? 'bg-red-600/75 px-2 py-2' : 'bg-green-600/75 px-2 py-2' %>">
           <%= msg %>
+          <button class="text-black-600 font-bold rounded-full bg-white w-6 h-6">x</button>
         </div>
       </div>
     <% end %>

@@ -9,4 +9,14 @@
     </p>
   </div>
 </div>
-  <%= link_to "Back to home", root_path, class:"mx-5 my-4 text-blue-600 border text-md" %>
+
+<div class="mx-5 my-6">
+  <h2 class="text-xl font-bold mb-2">Comments:</h2>
+  <%= render @article.comments %>
+</div>
+
+<div class="mx-5 my-6">
+  <h2 class="text-xl font-bold mb-2">Add a Comment:</h2>
+  <%= render 'comments/form' %>
+</div>
+<%= link_to "Back to home", root_path, class:"mx-5 my-4 text-blue-600 border text-md" %>
