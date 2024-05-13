@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render 'pages/navbar'%>
     <% flash.each do |type,msg| %>
       <div id="flash-container" class="fixed top-0 w-full flex justify-center">
         <div id="flash" class="flash <%= type == 'alert' ? 'bg-red-600/75 px-2 py-2' : 'bg-green-600/75 px-2 py-2' %>">

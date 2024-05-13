@@ -1,15 +1,28 @@
-<div class="p-4 grid grid-cols-4 gap-4">
-  <% @articles.each do |article| %>
-  <div class="border p-4">
-    <h1 class="text-xl font-bold mb-2">
-     <%= article.id %> | <%= article.title %> 
-    </h1> 
+<table class="table-auto w-full border-4">
+  <thead>
+    <tr class="bg-blue-400 text-white">
+      <th class="px-4 py-2 border">Article</th>
+      <th class="px-4 py-2 border">Description</th>
+      <th class="px-4 py-2 border">Actions</th>
+    </tr>
+  </thead>
 
-    <p class="text-gray-700">
-      <%= article.description %>
-    </p>
-  </div>
-  <% end %>
-</div>
-<%= link_to "Back to home", root_path, class:"text-blue-600 border text-md mx-3 my-3" %>
-
+  <tbody class="divide-y divide-gray-200">
+    <% @articles.each do |article| %>
+      <tr>
+        <td class="px-4 py-2 text-center border text-blue-500">
+          <%= link_to article.title, "/articles/#{article.id}"%>
+        </td>
+        <td class="px-4 py-2 text-center border">
+          <%= article.description %>
+        </td>
+        <td class="px-4 py-2 text-center border">
+          <% if article.user == current_user %>
+            <%= link_to "Edit", "/articles/#{article.id}/edit", class: "text-green-500 hover:text-green-700 mr-2" %>
+            <%= link_to "Delete", "/articles/#{article.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-red-500 hover:text-red-700" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
