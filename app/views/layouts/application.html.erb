@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    
   </head>
 
   <body>
@@ -16,7 +17,7 @@
       <div id="flash-container" class="fixed top-0 w-full flex justify-center">
         <div id="flash" class="flash <%= type == 'alert' ? 'bg-red-600/75 px-2 py-2' : 'bg-green-600/75 px-2 py-2' %>">
           <%= msg %>
-          
+          <button id="closeFlash" class="ml-4 bg-transparent text-white font-bold py-2 px-4" onclick="closeMessage()">x</button>          
         </div>
       </div>
     <% end %>
@@ -24,3 +25,11 @@
   </body>
 </html>
 
+<script>
+  function closeMessage() {
+  const flashContainer = document.getElementById('flash-container');
+  if (flashContainer) {
+    flashContainer.style.display = 'none';
+  }
+}
+</script>
