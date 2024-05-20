@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(params.require(:article).permit(:title, :description, :body, :image, pictures: []))
     @article.user_id = current_user.id
     if @article.save
       redirect_to @article, notice: "You have successfully created an article!"
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.update(params.require(:article).permit(:title, :description))
+    if @article.update(params.require(:article).permit(:title, :description, :body, :image, pictures: []))
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
